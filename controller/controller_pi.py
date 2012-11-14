@@ -1,7 +1,5 @@
 #!/usr/bin/python
 
-import RPi.GPIO as GPIO
-
 import time
 from time import localtime, strftime
 import os
