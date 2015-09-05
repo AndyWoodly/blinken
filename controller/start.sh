@@ -1,3 +1,3 @@
 #!/bin/sh
 
-nohup ./controller.py &
+nohup ./controller_pi.py &

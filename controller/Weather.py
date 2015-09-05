@@ -16,7 +16,8 @@ class Weather():
 
   def getData(self):
     try:
-      usock = urllib.urlopen('http://weather.yahooapis.com/forecastrss?p=GMXX5355&u=c')
+      #usock = urllib.urlopen('http://weather.yahooapis.com/forecastrss?p=GMXX5355&u=c')
+      usock = urllib.urlopen('http://weather.yahooapis.com/forecastrss?w=2455920&u=c')
       data = usock.readlines()
       usock.close()
       return data

@@ -184,14 +184,14 @@ while(1):
     try:
       messenger.showNews()
     except Exception, (error):
-      print "Can't show news: %s, %s" % (msg, error)
+      print "Can't show news: %s" % (error)
       pass
   if m == "30" and s == "00":
     try:
       weather.showToday()
       weather.showForecast()
     except Exception, (error):
-      print "Can't show forecast: %s, %s" % (msg, error)
+      print "Can't show forecast: %s" % (error)
       pass
 
 display.clear()
