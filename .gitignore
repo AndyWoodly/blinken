@@ -1,3 +1,5 @@
 missing_parport0.txt
 *.pyc
 nohup.out
+.idea
+*.iml
