@@ -96,6 +96,12 @@ class Messenger():
           print " ",
       print
 
+  def emptyFrame(self):
+    return self.display.emptyMatrix(8,18)
+
+  def showFrame(self, frame):
+    self.display.show(frame)
+
   def displayMessage(self, message):
     msg = message + "      "
     screen = self.display.emptyMatrix(8,18)

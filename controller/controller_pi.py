@@ -9,6 +9,7 @@ import sys
 import random
 import Messenger
 import Weather
+import Tide
 
 # minimum delay (seconds) between frames
 MIN_DELAY = 0.015
@@ -139,6 +140,8 @@ display = Display()
 # load messenger module
 messenger = Messenger.Messenger(display)
 weather = Weather.Weather(messenger)
+tide = Tide.Tide(messenger)
+#tide.showTide()
 #weather.showToday()
 #messenger.showNews()
 
@@ -154,6 +157,8 @@ while(1):
   if counter == next_pos:
     if counter % 3 == 0:
       weather.showTemperature()
+      time.sleep(5)
+      tide.showTide()
       time.sleep(5)
     counter = 0
     next_pos = 1 + (int)(random.random() * 100)
