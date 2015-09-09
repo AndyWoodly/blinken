@@ -8,19 +8,16 @@ class Tide():
 
   def __init__(self, messenger):
     self.messenger = messenger 
-    self.cache = {}
+
+  def getTime(self):
+    t = strftime("%H:%M:%S", localtime())
+    return t.split(":")
 
   def getData(self):
     try:
-      t = strftime("%H:%M:%S", localtime())
-      (h,m,s) = t.split(":")
-      cached = self.cache.get(h)
-      if cached is not None:
-        return cached
       usock = urllib.urlopen('http://api.spitcast.com/api/county/tide/santa-cruz/')
       data = json.loads(usock.read())
       usock.close()
-      self.cache[h] = data
       return data
     except Exception, error:
       print "Failed to get tide data: %s" % (str(error))
@@ -28,10 +25,16 @@ class Tide():
 
   def showTide(self):
     try:
+      hour = int(self.getTime()[0])
       d = self.getData()
       tide = map(lambda x: int(round(x["tide"])), d) 
       frame = self.messenger.emptyFrame()
       for y in range(18): 
+        # set time tick
+        if hour == y:
+          frame[0][y] = 1
+          frame[1][y] = 1
+        # draw tide height
         t = tide[y]
         for x in range(t):
           x_inv = max(7-x,0)
