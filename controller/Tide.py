@@ -28,6 +28,10 @@ class Tide():
       hour = int(self.getTime()[0])
       d = self.getData()
       tide = map(lambda x: int(round(x["tide"])), d) 
+      if hour > 12:
+        # shift diagram
+        hour -= 6 
+        tide = tide[6:]
       frame = self.messenger.emptyFrame()
       for y in range(18): 
         # set time tick
